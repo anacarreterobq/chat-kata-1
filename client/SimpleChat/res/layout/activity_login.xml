@@ -1,11 +1,49 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".LoginActivity" >
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="#ffffff">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User"
+        android:id="@+id/textView" android:layout_gravity="left|center_vertical" android:layout_marginLeft="40dp"
+        android:textColor="#6869A8" android:layout_marginTop="50dp" android:layout_marginBottom="5dp"/>
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/userName_eT" android:layout_gravity="left|center_vertical" android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp" android:editable="true" android:textColor="#666666"
+        />
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:id="@+id/textView1" android:layout_gravity="center_vertical" android:layout_marginLeft="40dp"
+        android:textColor="#6869A8" android:layout_marginTop="10dp" android:layout_marginBottom="5dp"/>
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/password_eT" android:layout_gravity="center_vertical" android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp" android:editable="true" android:password="true"
+        android:textColor="#666666"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Incorret Login"
+            android:id="@+id/login_err_tv" android:textColor="#ff676d" android:layout_marginLeft="40dp"
+            android:visibility="invisible"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:id="@+id/login_bt" android:layout_gravity="center_vertical|right|top" android:layout_marginLeft="90dp"
+            android:layout_marginRight="20dp" android:layout_marginTop="10dp"/>
+    </LinearLayout>
+</LinearLayout>
