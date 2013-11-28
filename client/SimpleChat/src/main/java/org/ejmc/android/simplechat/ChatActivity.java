@@ -39,8 +39,7 @@ public class ChatActivity extends ListActivity {
     private ServerSender send;
     private int nextSeq;
     private JSONArray messages_array;
-    SharedPreferences prefs;
-    SharedPreferences.Editor editor;
+    private SharedPreferences prefs;
 
 
     @Override
@@ -62,10 +61,6 @@ public class ChatActivity extends ListActivity {
 
         prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
         nextSeq=prefs.getInt("nextSeq", 0);
-        editor = prefs.edit();
-
-        conect = new ServerListener(this);
-        conect.execute("http://172.19.209.30:8080/chat-kata/api/chat",Integer.toString(nextSeq));
 
         T=new Timer();
         T.scheduleAtFixedRate(new TimerTask() {
@@ -111,8 +106,7 @@ public class ChatActivity extends ListActivity {
                 }
             }
             nextSeq = json.getInt("nextSeq");
-            editor.putInt("nextSeq", nextSeq);
-            editor.commit();
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -126,4 +120,9 @@ public class ChatActivity extends ListActivity {
         message_et.setText("");
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        prefs.edit().putInt("nextSeq", nextSeq).commit();
+    }
 }

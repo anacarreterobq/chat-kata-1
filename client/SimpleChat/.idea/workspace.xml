@@ -13,7 +13,7 @@
     <file path="$PROJECT_DIR$/../PruebasTest/src/main/java/Fechas.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385461850766" ignored="false" />
     <file path="$PROJECT_DIR$/../PruebasTest/src/test/java/FechasTest.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385462128523" ignored="false" />
     <file path="/FechasTest.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385462095935" ignored="false" />
-    <file path="/ChatActivity.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385636260886" ignored="false" />
+    <file path="/ChatActivity.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385639647473" ignored="false" />
     <file path="/Dummy.txt" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385550415258" ignored="false" />
     <file path="/ConectServer.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385555884046" ignored="false" />
     <file path="/ServerSender.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385630419856" ignored="false" />
@@ -82,12 +82,12 @@
       <file leaf-file-name="ChatActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/ejmc/android/simplechat/ChatActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="92" column="62" selection-start="3057" selection-end="3057" vertical-scroll-proportion="1.5058651">
+            <state line="64" column="47" selection-start="2082" selection-end="2082" vertical-scroll-proportion="0.5381232">
               <folding>
-                <element signature="e#2315#2569#0" expanded="true" />
-                <element signature="e#2558#2559#0" expanded="true" />
-                <element signature="e#2622#2969#0" expanded="true" />
-                <element signature="e#2958#2959#0" expanded="true" />
+                <element signature="e#2113#2367#0" expanded="true" />
+                <element signature="e#2356#2357#0" expanded="true" />
+                <element signature="e#2420#2767#0" expanded="true" />
+                <element signature="e#2756#2757#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -96,7 +96,7 @@
       <file leaf-file-name="ServerListener.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/ejmc/android/simplechat/model/ServerListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="0" selection-start="1041" selection-end="1041" vertical-scroll-proportion="0.0">
+            <state line="50" column="56" selection-start="1315" selection-end="1315" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -145,8 +145,8 @@
         <option value="$PROJECT_DIR$/src/main/java/org/ejmc/android/simplechat/model/ConectServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/ejmc/android/simplechat/model/ServerLisener.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/ejmc/android/simplechat/model/ServerSender.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/ejmc/android/simplechat/ChatActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/ejmc/android/simplechat/model/ServerListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/ejmc/android/simplechat/ChatActivity.java" />
       </list>
     </option>
   </component>
@@ -733,19 +733,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/ejmc/android/simplechat/model/ServerListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="0" selection-start="1041" selection-end="1041" vertical-scroll-proportion="0.0">
+        <state line="50" column="56" selection-start="1315" selection-end="1315" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/ejmc/android/simplechat/ChatActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="62" selection-start="3057" selection-end="3057" vertical-scroll-proportion="1.5058651">
+        <state line="64" column="47" selection-start="2082" selection-end="2082" vertical-scroll-proportion="0.5381232">
           <folding>
-            <element signature="e#2315#2569#0" expanded="true" />
-            <element signature="e#2558#2559#0" expanded="true" />
-            <element signature="e#2622#2969#0" expanded="true" />
-            <element signature="e#2958#2959#0" expanded="true" />
+            <element signature="e#2113#2367#0" expanded="true" />
+            <element signature="e#2356#2357#0" expanded="true" />
+            <element signature="e#2420#2767#0" expanded="true" />
+            <element signature="e#2756#2757#0" expanded="true" />
           </folding>
         </state>
       </provider>
