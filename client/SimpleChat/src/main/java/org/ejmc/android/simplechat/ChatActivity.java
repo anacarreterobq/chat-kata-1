@@ -1,6 +1,8 @@
 package org.ejmc.android.simplechat;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -16,26 +18,29 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class ChatActivity extends ListActivity {
-    /** Called when the activity is first created. */
 
+    private Timer T;
     private Bundle user_data;
     private ArrayList<Message> msg_list =  new ArrayList<Message>();
-    private String user_name,user_password;
+    private String user_name,user_password, message;
     private TextView user_name_tv;
     private EditText message_et;
     private ChatList adapter;
     private Button send_bt;
     private ListView chat_lv;
     private Gson message_gson;
-    private String message;
     private AsyncTask<String, Void, String> response_server;
     private ServerListener conect;
     private ServerSender send;
     private int nextSeq;
     private JSONArray messages_array;
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
 
 
     @Override
@@ -53,12 +58,24 @@ public class ChatActivity extends ListActivity {
         send_bt=(Button)findViewById(R.id.send_bt);
         chat_lv=(ListView)this.getListView();
 
+        user_name_tv.setText("Chat - "+user_name);
+
+        prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        nextSeq=prefs.getInt("nextSeq", 0);
+        editor = prefs.edit();
+
         conect = new ServerListener(this);
         conect.execute("http://172.19.209.30:8080/chat-kata/api/chat",Integer.toString(nextSeq));
 
+        T=new Timer();
+        T.scheduleAtFixedRate(new TimerTask() {
 
-        user_name_tv.setText("Chat - "+user_name);
-        nextSeq=0;
+            @Override public void run() {
+                conect = new ServerListener(ChatActivity.this);
+                conect.execute("http://172.19.209.30:8080/chat-kata/api/chat",Integer.toString(nextSeq));
+            }
+        }, 1000, 1000);
+
 
 
         send_bt.setOnClickListener(new View.OnClickListener() {
@@ -66,12 +83,6 @@ public class ChatActivity extends ListActivity {
             public void onClick(View v) {
                 send = new ServerSender(ChatActivity.this);
                 response_server=send.execute("http://172.19.209.30:8080/chat-kata/api/chat", message_gson.toJson(new Message(user_name,message_et.getText().toString())));
-
-              //  msg_list.add(new Message(user_name,response_server..get().toString());
-               // conect.execute("http://172.19.209.30:8080/chat-kata/api/chat",Integer.toString(nextSeq));
-          //      chat_lv.setSelection(chat_lv.getAdapter().getCount()-1);
-
-
             }
         });
 
@@ -80,7 +91,6 @@ public class ChatActivity extends ListActivity {
     @Override
 
     protected void onSaveInstanceState(Bundle guardarEstado) {
-
         super.onSaveInstanceState(guardarEstado);
         guardarEstado.putAll(guardarEstado);
     }
@@ -101,8 +111,10 @@ public class ChatActivity extends ListActivity {
                 }
             }
             nextSeq = json.getInt("nextSeq");
+            editor.putInt("nextSeq", nextSeq);
+            editor.commit();
         } catch (JSONException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
 
         adapter = new ChatList(ChatActivity.this, msg_list);

@@ -40,7 +40,6 @@ public class ServerListener extends AsyncTask<String,Void, JSONObject> {
     }
     @Override
     protected JSONObject doInBackground(String... url) {
-        //Descargamos el fichero
 
         InputStream is = null;
         String result = "";
