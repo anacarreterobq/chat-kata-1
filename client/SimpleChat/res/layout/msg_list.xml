@@ -20,9 +20,10 @@
     <TextView
             android:id="@+id/mensaje"
             android:layout_below="@id/nick"
-            android:layout_toRightOf="@id/nick"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Mensaje" android:paddingTop="5dp" android:paddingBottom="5dp"/>
+            android:text="Mensaje" android:paddingTop="5dp" android:paddingBottom="5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"/>
 
 </RelativeLayout>
