@@ -67,7 +67,7 @@ public class ChatActivity extends ListActivity {
 
             @Override public void run() {
                 conect = new ServerListener(ChatActivity.this);
-                conect.execute("http://172.19.209.30:8080/chat-kata/api/chat",Integer.toString(nextSeq));
+                conect.execute("http://172.19.209.30:8080/chat-kata/api/chat?next_seq="+Integer.toString(nextSeq));
             }
         }, 1000, 1000);
 
@@ -100,7 +100,7 @@ public class ChatActivity extends ListActivity {
         try {
             messages_array = json.getJSONArray("messages");
             if(messages_array.length()!=0){
-                for(int i=nextSeq;i<messages_array.length();i++){
+                for(int i=0;i<messages_array.length();i++){
                     JSONObject c = messages_array.getJSONObject(i);
                     msg_list.add(new Message(c.getString("nick"), c.getString("message")));
                 }

@@ -11,16 +11,19 @@ package org.ejmc.android.simplechat.model;
 import android.os.AsyncTask;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpParams;
+import org.apache.http.util.EntityUtils;
 import org.ejmc.android.simplechat.ChatActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -41,31 +44,19 @@ public class ServerListener extends AsyncTask<String,Void, JSONObject> {
     @Override
     protected JSONObject doInBackground(String... url) {
 
-        InputStream is = null;
-        String result = "";
+        String result = null;
         JSONObject json = null;
 
         try{
             HttpClient httpclient = new DefaultHttpClient();
             HttpGet httpget = new HttpGet(url[0]);
-            httpget.getParams().setIntParameter("seq", Integer.parseInt(url[1]));
+            //httpget.getParams().setIntParameter("next_seq", Integer.parseInt(url[1]));
             HttpResponse response = httpclient.execute(httpget);
             HttpEntity entity = response.getEntity();
-            is = entity.getContent();
-        }catch(Exception e){
+            result= EntityUtils.toString(entity);
+        } catch (ClientProtocolException e) {
             e.printStackTrace();
-        }
-
-        try{
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
-            StringBuilder sb = new StringBuilder();
-            String line = null;
-            while ((line = reader.readLine()) != null) {
-                sb.append(line + "\n");
-            }
-            is.close();
-            result=sb.toString();
-        }catch(Exception e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
