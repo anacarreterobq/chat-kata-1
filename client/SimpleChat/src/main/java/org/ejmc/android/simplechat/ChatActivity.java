@@ -27,7 +27,7 @@ public class ChatActivity extends ListActivity {
     private Timer T;
     private Bundle user_data;
     private ArrayList<Message> msg_list =  new ArrayList<Message>();
-    private String user_name,user_password, message;
+    private String user_name, user_password, url;
     private TextView user_name_tv;
     private EditText message_et;
     private ChatList adapter;
@@ -40,6 +40,7 @@ public class ChatActivity extends ListActivity {
     private int nextSeq;
     private JSONArray messages_array;
     private SharedPreferences prefs;
+
 
 
     @Override
@@ -62,12 +63,14 @@ public class ChatActivity extends ListActivity {
         prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
         nextSeq=prefs.getInt("nextSeq", 0);
 
+        url= "http://172.19.209.30:8080/chat-kata/api/chat";
+
         T=new Timer();
         T.scheduleAtFixedRate(new TimerTask() {
 
             @Override public void run() {
                 conect = new ServerListener(ChatActivity.this);
-                conect.execute("http://172.19.209.30:8080/chat-kata/api/chat?next_seq="+Integer.toString(nextSeq));
+                conect.execute(url+"?next_seq="+Integer.toString(nextSeq));
             }
         }, 1000, 1000);
 
@@ -77,7 +80,7 @@ public class ChatActivity extends ListActivity {
             @Override
             public void onClick(View v) {
                 send = new ServerSender(ChatActivity.this);
-                response_server=send.execute("http://172.19.209.30:8080/chat-kata/api/chat", message_gson.toJson(new Message(user_name,message_et.getText().toString())));
+                response_server=send.execute(url, message_gson.toJson(new Message(user_name,message_et.getText().toString())));
             }
         });
 
