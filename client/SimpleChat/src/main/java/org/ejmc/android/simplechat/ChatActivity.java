@@ -55,7 +55,7 @@ public class ChatActivity extends ListActivity {
 
         conect = new ServerListener(this);
         conect.execute("http://172.19.209.30:8080/chat-kata/api/chat",Integer.toString(nextSeq));
-        send = new ServerSender(this);
+
 
         user_name_tv.setText("Chat - "+user_name);
         nextSeq=0;
@@ -64,12 +64,13 @@ public class ChatActivity extends ListActivity {
         send_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                send = new ServerSender(ChatActivity.this);
                 response_server=send.execute("http://172.19.209.30:8080/chat-kata/api/chat", message_gson.toJson(new Message(user_name,message_et.getText().toString())));
 
               //  msg_list.add(new Message(user_name,response_server..get().toString());
-                conect.execute("http://172.19.209.30:8080/chat-kata/api/chat",Integer.toString(nextSeq));
+               // conect.execute("http://172.19.209.30:8080/chat-kata/api/chat",Integer.toString(nextSeq));
           //      chat_lv.setSelection(chat_lv.getAdapter().getCount()-1);
-                message_et.setText("");
+
 
             }
         });
@@ -90,7 +91,7 @@ public class ChatActivity extends ListActivity {
         super.onRestoreInstanceState(recEstado);
     }
 
-    public void refresh(JSONObject json){
+    public void refresh_msg(JSONObject json){
         try {
             messages_array = json.getJSONArray("messages");
             if(messages_array.length()!=0){
@@ -107,6 +108,10 @@ public class ChatActivity extends ListActivity {
         adapter = new ChatList(ChatActivity.this, msg_list);
         setListAdapter((ListAdapter) adapter);
         chat_lv.setSelection(chat_lv.getAdapter().getCount()-1);
+    }
+
+    public void refresh_send(){
+        message_et.setText("");
     }
 
 }

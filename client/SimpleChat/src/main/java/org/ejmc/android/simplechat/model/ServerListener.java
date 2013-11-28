@@ -81,8 +81,9 @@ public class ServerListener extends AsyncTask<String,Void, JSONObject> {
 
     //}
 
+    @Override
     protected void onPostExecute(JSONObject msg) {
-        chatActivity.refresh(msg);
+        chatActivity.refresh_msg(msg);
 
     }
 

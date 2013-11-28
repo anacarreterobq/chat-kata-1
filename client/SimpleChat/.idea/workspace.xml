@@ -13,11 +13,11 @@
     <file path="$PROJECT_DIR$/../PruebasTest/src/main/java/Fechas.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385461850766" ignored="false" />
     <file path="$PROJECT_DIR$/../PruebasTest/src/test/java/FechasTest.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385462128523" ignored="false" />
     <file path="/FechasTest.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385462095935" ignored="false" />
-    <file path="/ChatActivity.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385570782450" ignored="false" />
+    <file path="/ChatActivity.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385630282718" ignored="false" />
     <file path="/Dummy.txt" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385550415258" ignored="false" />
     <file path="/ConectServer.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385555884046" ignored="false" />
-    <file path="/ServerSender.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385627135526" ignored="false" />
-    <file path="/ServerListener.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385570691193" ignored="false" />
+    <file path="/ServerSender.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385630419856" ignored="false" />
+    <file path="/ServerListener.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385630163375" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,11 +79,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ChatActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ChatActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/ejmc/android/simplechat/ChatActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="109" selection-start="2431" selection-end="2520" vertical-scroll-proportion="-0.055718474">
-              <folding />
+            <state line="106" column="45" selection-start="3592" selection-end="3592" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#2023#2645#0" expanded="true" />
+                <element signature="e#2634#2635#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -91,16 +94,16 @@
       <file leaf-file-name="ServerListener.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/ejmc/android/simplechat/model/ServerListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="38" selection-start="1279" selection-end="1279" vertical-scroll-proportion="0.0">
+            <state line="83" column="13" selection-start="2242" selection-end="2242" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServerSender.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ServerSender.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/ejmc/android/simplechat/model/ServerSender.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="44" selection-start="1664" selection-end="1664" vertical-scroll-proportion="0.0">
+            <state line="67" column="57" selection-start="1883" selection-end="1883" vertical-scroll-proportion="0.5601173">
               <folding />
             </state>
           </provider>
@@ -556,7 +559,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-4" width="1857" height="1085" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -572,7 +575,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15478165" sideWeight="0.755603" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15478165" sideWeight="0.755603" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24439701" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -721,21 +724,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/ejmc/android/simplechat/model/ServerListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="38" selection-start="1279" selection-end="1279" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/ejmc/android/simplechat/model/ServerSender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="44" selection-start="1664" selection-end="1664" vertical-scroll-proportion="0.0">
+        <state line="83" column="13" selection-start="2242" selection-end="2242" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/ejmc/android/simplechat/ChatActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="109" selection-start="2431" selection-end="2520" vertical-scroll-proportion="-0.055718474">
+        <state line="106" column="45" selection-start="3592" selection-end="3592" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#2023#2645#0" expanded="true" />
+            <element signature="e#2634#2635#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/ejmc/android/simplechat/model/ServerSender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="57" selection-start="1883" selection-end="1883" vertical-scroll-proportion="0.5601173">
           <folding />
         </state>
       </provider>

@@ -39,39 +39,32 @@ public class ServerSender extends AsyncTask<String,Void, String> {
     }
     @Override
     protected String doInBackground(String... url) {
-        //Descargamos el fichero
 
-        InputStream is = null;
-        String result = "";
-        JSONObject json = null;
         String respStr="";
+        HttpClient httpclient = new DefaultHttpClient();;
+        HttpPost httppost = new HttpPost(url[0]);
+        String msg = url[1];
+        httppost.setHeader("content-type", "application/json");
+        StringEntity entity;
+        HttpResponse resp;
 
-        try{
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost(url[0]);
-            String msg=url[1];
-            httppost.setHeader("content-type", "application/json");
+        do{
 
             try{
-                StringEntity entity = new StringEntity(msg);
+                entity = new StringEntity(msg);
                 httppost.setEntity(entity);
-                HttpResponse resp = httpclient.execute(httppost);
+                resp = httpclient.execute(httppost);
                 respStr=resp.getStatusLine().getReasonPhrase();
 
             }catch (UnsupportedEncodingException e){
                 e.printStackTrace();
             } catch (ClientProtocolException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                e.printStackTrace();
             } catch (IOException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                e.printStackTrace();
             }
 
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-
-
-        //if no OK
+        }while(!respStr.equals("OK"));
 
         return respStr;
     }
@@ -80,8 +73,9 @@ public class ServerSender extends AsyncTask<String,Void, String> {
 
     //}
 
-    protected void onPostExecute(JSONObject msg) {
-
+    @Override
+    protected void onPostExecute(String n) {
+        chatActivity.refresh_send();
     }
 
 }
