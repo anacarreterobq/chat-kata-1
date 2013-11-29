@@ -23,19 +23,22 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/msg_et" android:layout_weight="1"
             android:layout_marginBottom="20dp"
-            android:textColor="#666666"/>
+            android:textColor="#666666"
+            />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Send"
             android:id="@+id/send_bt"
-            android:onClick="sendMessage"/>
+            android:onClick="sendMessage"
+            android:layout_gravity="bottom"/>
     </LinearLayout>
 
 </LinearLayout>
