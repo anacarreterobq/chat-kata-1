@@ -61,7 +61,7 @@ public class ChatActivity extends ListActivity {
         prefs = getSharedPreferences("Chat-kata", Context.MODE_PRIVATE);
         nextSeq=prefs.getInt("nextSeq", 0);
 
-        url= "http://172.16.100.221:8080/chat-kata/api/chat";
+        url= "http://172.16.100.87:8080/chat-kata/api/chat";
 
         timertask = new RepeatListener(nextSeq, ChatActivity.this, url);
 
@@ -92,6 +92,7 @@ public class ChatActivity extends ListActivity {
     public void refresh_msg(JSONObject json){
         try {
             messages_array = json.getJSONArray("messages");
+            msg_list= new ArrayList<Message>();
             if(messages_array.length()!=0){
                 for(int i=0;i<messages_array.length();i++){
                     JSONObject c = messages_array.getJSONObject(i);
