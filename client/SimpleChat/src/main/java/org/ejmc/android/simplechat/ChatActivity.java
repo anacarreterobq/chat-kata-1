@@ -9,10 +9,7 @@ import android.view.View;
 import android.widget.*;
 import android.app.ListActivity;
 import com.google.gson.Gson;
-import org.ejmc.android.simplechat.model.ServerListener;
-import org.ejmc.android.simplechat.model.Message;
-import org.ejmc.android.simplechat.model.ChatList;
-import org.ejmc.android.simplechat.model.ServerSender;
+import org.ejmc.android.simplechat.model.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,7 +21,7 @@ import java.util.TimerTask;
 
 public class ChatActivity extends ListActivity {
 
-    private Timer T;
+    private Timer timer;
     private Bundle user_data;
     private ArrayList<Message> msg_list =  new ArrayList<Message>();
     private String user_name, user_password, url;
@@ -40,6 +37,7 @@ public class ChatActivity extends ListActivity {
     private int nextSeq;
     private JSONArray messages_array;
     private SharedPreferences prefs;
+    private RepeatListener timertask;
 
 
 
@@ -60,20 +58,12 @@ public class ChatActivity extends ListActivity {
 
         user_name_tv.setText("Chat - "+user_name);
 
-        prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        prefs = getSharedPreferences("Chat-kata", Context.MODE_PRIVATE);
         nextSeq=prefs.getInt("nextSeq", 0);
 
-        url= "http://172.19.209.30:8080/chat-kata/api/chat";
+        url= "http://172.16.100.221:8080/chat-kata/api/chat";
 
-        T=new Timer();
-        T.scheduleAtFixedRate(new TimerTask() {
-
-            @Override public void run() {
-                conect = new ServerListener(ChatActivity.this);
-                conect.execute(url+"?next_seq="+Integer.toString(nextSeq));
-            }
-        }, 1000, 1000);
-
+        timertask = new RepeatListener(nextSeq, ChatActivity.this, url);
 
 
         send_bt.setOnClickListener(new View.OnClickListener() {
