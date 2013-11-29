@@ -57,6 +57,10 @@ public class ChatList
         return arg1;
     }
 
+    public void setView(View v){
+
+    }
+
     class ContenedorView{
         TextView nombre;
         TextView mensaje;

@@ -23,7 +23,7 @@ public class ChatActivity extends ListActivity {
 
     private Timer timer;
     private Bundle user_data;
-    private ArrayList<Message> msg_list =  new ArrayList<Message>();
+    private static ArrayList<Message> msg_list;
     private String user_name, user_password, url;
     private TextView user_name_tv;
     private EditText message_et;
@@ -39,7 +39,12 @@ public class ChatActivity extends ListActivity {
     private SharedPreferences prefs;
     private RepeatListener timertask;
 
+     public ChatActivity(){
+         if (msg_list==null){
+            msg_list =  new ArrayList<Message>();
+         }
 
+     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,7 +69,6 @@ public class ChatActivity extends ListActivity {
 
         timertask = new RepeatListener(nextSeq, ChatActivity.this, url);
 
-
         send_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +83,7 @@ public class ChatActivity extends ListActivity {
 
     protected void onSaveInstanceState(Bundle guardarEstado) {
         super.onSaveInstanceState(guardarEstado);
-        guardarEstado.putAll(guardarEstado);
+      //  guardarEstado.putAll(guardarEstado);
     }
 
     @Override
@@ -112,22 +116,33 @@ public class ChatActivity extends ListActivity {
     public void refresh_send(){
         message_et.setText("");
     }
-/*
-    //se podria borrar....
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        prefs.edit().putInt(user_name, nextSeq).commit();
-    }*/
 
     public String getUser_name(){
         return user_name;
     }
+
+
+   @Override protected void onResume() {
+        //recuperar
+       adapter = new ChatList(ChatActivity.this, msg_list);
+       setListAdapter((ListAdapter) adapter);
+       chat_lv.setSelection(chat_lv.getAdapter().getCount()-1);
+        super.onResume();
+    }
+
+   /* @Override protected void onPause() {
+        //guardar
+        this.getListView();
+        super.onPause();
+    }*/
+
 
     @Override
     public void onStop(){
         timertask.getTimer().cancel();
         super.onStop();
     }
+
+
 
 }
