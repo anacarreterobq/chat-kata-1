@@ -11,6 +11,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 import org.ejmc.android.simplechat.ChatActivity;
@@ -27,7 +28,7 @@ public class RepeatListener {
         nextSeq = nSeq;
         this.url=url;
         this.context=context;
-        Timer timer = new Timer();
+        timer = new Timer();
         timer.scheduleAtFixedRate(new MyTimerTask(),0, 1000);
     }
 
@@ -37,6 +38,8 @@ public class RepeatListener {
         public void run() {
                 try {
                     conect = new ServerListener(context);
+                    SharedPreferences settings = context.getSharedPreferences("Chat-kata", context.MODE_PRIVATE);
+                    nextSeq = settings.getInt(context.getUser_name(), 0);
                     conect.execute(url + "?next_seq=" + Integer.toString(nextSeq));
 
                 } catch (Exception e) {
@@ -44,6 +47,10 @@ public class RepeatListener {
                 }
 
         }
+    }
+
+    public Timer getTimer(){
+        return timer;
     }
 
 

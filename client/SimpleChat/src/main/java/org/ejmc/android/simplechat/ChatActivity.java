@@ -59,9 +59,8 @@ public class ChatActivity extends ListActivity {
         user_name_tv.setText("Chat - "+user_name);
 
         prefs = getSharedPreferences("Chat-kata", Context.MODE_PRIVATE);
-        nextSeq=prefs.getInt("nextSeq", 0);
-
-        url= "http://172.16.100.87:8080/chat-kata/api/chat";
+        nextSeq=prefs.getInt(user_name, 0);
+        url= "http://172.16.100.73:8080/chat-kata/api/chat";
 
         timertask = new RepeatListener(nextSeq, ChatActivity.this, url);
 
@@ -92,31 +91,43 @@ public class ChatActivity extends ListActivity {
     public void refresh_msg(JSONObject json){
         try {
             messages_array = json.getJSONArray("messages");
-            msg_list= new ArrayList<Message>();
             if(messages_array.length()!=0){
                 for(int i=0;i<messages_array.length();i++){
                     JSONObject c = messages_array.getJSONObject(i);
                     msg_list.add(new Message(c.getString("nick"), c.getString("message")));
                 }
+                nextSeq = json.getInt("nextSeq");
+                prefs.edit().putInt(user_name, nextSeq).commit();
+                adapter = new ChatList(ChatActivity.this, msg_list);
+                setListAdapter((ListAdapter) adapter);
+                chat_lv.setSelection(chat_lv.getAdapter().getCount()-1);
             }
-            nextSeq = json.getInt("nextSeq");
+
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        adapter = new ChatList(ChatActivity.this, msg_list);
-        setListAdapter((ListAdapter) adapter);
-        chat_lv.setSelection(chat_lv.getAdapter().getCount()-1);
     }
 
     public void refresh_send(){
         message_et.setText("");
     }
-
+/*
+    //se podria borrar....
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        prefs.edit().putInt("nextSeq", nextSeq).commit();
+        prefs.edit().putInt(user_name, nextSeq).commit();
+    }*/
+
+    public String getUser_name(){
+        return user_name;
     }
+
+    @Override
+    public void onStop(){
+        timertask.getTimer().cancel();
+        super.onStop();
+    }
+
 }
