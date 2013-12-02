@@ -21,7 +21,6 @@ import java.util.TimerTask;
 
 public class ChatActivity extends ListActivity {
 
-    private Timer timer;
     private Bundle user_data;
     private static ArrayList<Message> msg_list;
     private String user_name, user_password, url;
@@ -43,7 +42,6 @@ public class ChatActivity extends ListActivity {
          if (msg_list==null){
             msg_list =  new ArrayList<Message>();
          }
-
      }
 
     @Override
@@ -65,7 +63,7 @@ public class ChatActivity extends ListActivity {
 
         prefs = getSharedPreferences("Chat-kata", Context.MODE_PRIVATE);
         nextSeq=prefs.getInt(user_name, 0);
-        url= "http://172.16.100.73:8080/chat-kata/api/chat";
+        url= "http://172.16.100.32:8080/chat-kata/api/chat";
 
         timertask = new RepeatListener(nextSeq, ChatActivity.this, url);
 
@@ -76,20 +74,15 @@ public class ChatActivity extends ListActivity {
                 response_server=send.execute(url, message_gson.toJson(new Message(user_name,message_et.getText().toString())));
             }
         });
-
     }
 
     @Override
-
-    protected void onSaveInstanceState(Bundle guardarEstado) {
-        super.onSaveInstanceState(guardarEstado);
-      //  guardarEstado.putAll(guardarEstado);
-    }
-
-    @Override
-
-    protected void onRestoreInstanceState(Bundle recEstado) {
-        super.onRestoreInstanceState(recEstado);
+    //Recuperar. La actividad va a comenzar a interactuar con el usuario
+    protected void onResume() {
+        adapter = new ChatList(ChatActivity.this, msg_list);
+        setListAdapter((ListAdapter) adapter);
+        chat_lv.setSelection(chat_lv.getAdapter().getCount()-1);
+        super.onResume();
     }
 
     public void refresh_msg(JSONObject json){
@@ -106,11 +99,21 @@ public class ChatActivity extends ListActivity {
                 setListAdapter((ListAdapter) adapter);
                 chat_lv.setSelection(chat_lv.getAdapter().getCount()-1);
             }
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    //Guardar el estado de la Activity antes de ser destruida
+    protected void onSaveInstanceState(Bundle guardarEstado) {
+        super.onSaveInstanceState(guardarEstado);
+    }
+
+    @Override
+    //Recuperar estado
+    protected void onRestoreInstanceState(Bundle recEstado) {
+        super.onRestoreInstanceState(recEstado);
     }
 
     public void refresh_send(){
@@ -120,23 +123,6 @@ public class ChatActivity extends ListActivity {
     public String getUser_name(){
         return user_name;
     }
-
-
-   @Override protected void onResume() {
-        //recuperar
-       adapter = new ChatList(ChatActivity.this, msg_list);
-       setListAdapter((ListAdapter) adapter);
-       chat_lv.setSelection(chat_lv.getAdapter().getCount()-1);
-        super.onResume();
-    }
-
-
-   /* @Override protected void onPause() {
-        //guardar
-        this.getListView();
-        super.onPause();
-    }*/
-
 
     @Override
     public void onStop(){

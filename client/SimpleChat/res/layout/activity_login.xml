@@ -29,7 +29,7 @@
         android:id="@+id/password_eT" android:layout_gravity="center_vertical" android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp" android:editable="true" android:password="true"
         android:textColor="#666666"/>
-    <LinearLayout
+    <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
@@ -38,12 +38,13 @@
             android:layout_height="wrap_content"
             android:text="Incorret Login"
             android:id="@+id/login_err_tv" android:textColor="#ff676d" android:layout_marginLeft="40dp"
-            android:visibility="invisible"/>
+            android:visibility="invisible" android:layout_marginTop="10dp" android:layout_alignParentRight="false"
+            android:layout_alignParentLeft="true"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Login"
-            android:id="@+id/login_bt" android:layout_gravity="center_vertical|right|top" android:layout_marginLeft="90dp"
-            android:layout_marginRight="20dp" android:layout_marginTop="10dp"/>
-    </LinearLayout>
+            android:id="@+id/login_bt" android:layout_gravity="center_vertical|right|top"
+            android:layout_marginRight="20dp" android:layout_marginTop="10dp" android:layout_alignParentRight="true"/>
+    </RelativeLayout>
 </LinearLayout>

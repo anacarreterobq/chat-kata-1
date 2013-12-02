@@ -9,19 +9,13 @@ package org.ejmc.android.simplechat.model;
  */
 
 import android.os.AsyncTask;
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.ejmc.android.simplechat.ChatActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.*;
 
 
@@ -33,10 +27,6 @@ public class ServerSender extends AsyncTask<String,Void, String> {
         chatActivity=ca;
     }
 
-
-    protected void onPreExecute() {
-
-    }
     @Override
     protected String doInBackground(String... url) {
 
@@ -48,30 +38,28 @@ public class ServerSender extends AsyncTask<String,Void, String> {
         StringEntity entity;
         HttpResponse resp;
 
-        do{
+        if(!msg.startsWith("{\"message\":\"\"",0)) {
+            do{
+                try{
+                    entity = new StringEntity(msg);
+                    httppost.setEntity(entity);
+                    resp = httpclient.execute(httppost);
+                    respStr=resp.getStatusLine().getReasonPhrase();
 
-            try{
-                entity = new StringEntity(msg);
-                httppost.setEntity(entity);
-                resp = httpclient.execute(httppost);
-                respStr=resp.getStatusLine().getReasonPhrase();
 
-            }catch (UnsupportedEncodingException e){
-                e.printStackTrace();
-            } catch (ClientProtocolException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                }catch (UnsupportedEncodingException e){
+                    e.printStackTrace();
+                } catch (ClientProtocolException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-        }while(!respStr.equals("OK"));
+            }while(!respStr.equals("OK"));
+        }
 
         return respStr;
     }
-
-    //protected void onProgressUpdate (Float... valores) {
-
-    //}
 
     @Override
     protected void onPostExecute(String n) {

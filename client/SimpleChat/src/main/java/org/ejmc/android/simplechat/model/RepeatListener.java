@@ -9,11 +9,7 @@ package org.ejmc.android.simplechat.model;
  */
 import java.util.Timer;
 import java.util.TimerTask;
-
-import android.app.Activity;
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.widget.TextView;
 import org.ejmc.android.simplechat.ChatActivity;
 
 public class RepeatListener {
@@ -45,13 +41,10 @@ public class RepeatListener {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
         }
     }
 
     public Timer getTimer(){
         return timer;
     }
-
-
 }
