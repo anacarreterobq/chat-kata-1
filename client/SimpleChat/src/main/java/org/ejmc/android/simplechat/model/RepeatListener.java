@@ -29,7 +29,7 @@ public class RepeatListener {
         this.url=url;
         this.context=context;
         timer = new Timer();
-        timer.scheduleAtFixedRate(new MyTimerTask(),0, 1000);
+        timer.scheduleAtFixedRate(new MyTimerTask(),0, 500);
     }
 
     public class MyTimerTask extends TimerTask {
