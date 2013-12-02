@@ -42,7 +42,7 @@
     <file path="$PROJECT_DIR$/../PruebasTest/src/test/java/FechasTest.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385462128523" ignored="false" />
     <file path="/FechasTest.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385462095935" ignored="false" />
     <file path="/ChatActivity.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385995354478" ignored="false" />
-    <file path="/Dummy.txt" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1386004705592" ignored="false" />
+    <file path="/Dummy.txt" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1386004751523" ignored="false" />
     <file path="/ConectServer.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385555884046" ignored="false" />
     <file path="/ServerSender.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385984915863" ignored="false" />
     <file path="/ServerListener.java" changelist="2d1a82c1-a1a4-4547-a770-daefc3834d4b" time="1385976009566" ignored="false" />
@@ -790,7 +790,11 @@
       <created>1386004710265</created>
       <updated>1386004710265</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Mejorado :)">
+      <created>1386004757938</created>
+      <updated>1386004757938</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
