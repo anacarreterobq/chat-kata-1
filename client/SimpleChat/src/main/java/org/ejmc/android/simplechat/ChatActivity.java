@@ -130,6 +130,7 @@ public class ChatActivity extends ListActivity {
         super.onResume();
     }
 
+
    /* @Override protected void onPause() {
         //guardar
         this.getListView();
